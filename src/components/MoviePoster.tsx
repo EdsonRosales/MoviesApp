@@ -5,9 +5,11 @@ import type { Movie } from '../interfaces/movieInterface';
 
 type MoviePosterProps = {
   movie: Movie;
+  height?: number;
+  width?: number;
 }
 
-export const MoviePoster = ({ movie }: MoviePosterProps) => {
+export const MoviePoster = ({ movie, height = 420, width = 300 }: MoviePosterProps) => {
 
   const { poster_path } = movie;
   const uriPoster = `https://image.tmdb.org/t/p/w500${poster_path}`
@@ -15,8 +17,9 @@ export const MoviePoster = ({ movie }: MoviePosterProps) => {
   return (
     <View 
       style={{
-        width: 300,
-        height: 420,
+        width,
+        height,
+        marginHorizontal: 8
       }}
     >
       <View style={ styles.imageContainer }>
