@@ -2,9 +2,7 @@ import React from 'react'
 import {
   ActivityIndicator,
   Dimensions,
-  FlatList,
   ScrollView,
-  Text,
   View 
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -19,7 +17,7 @@ const { width: windowWidth } = Dimensions.get('window');
 
 export const HomeScreen = () => {
 
-  const { nowPlayingMovies, isLoading } = useMovies();
+  const { nowPlaying, popular, topRated, upcoming, isLoading } = useMovies();
   const { top } = useSafeAreaInsets();
 
   if (isLoading) {
@@ -42,7 +40,7 @@ export const HomeScreen = () => {
         {/* Main Carousel */}
         <View style={{ height: 440 }}>
           <Carousel
-            data={ nowPlayingMovies }
+            data={ nowPlaying }
             renderItem={ ({ item }) =>  <MoviePoster movie={ item } />}
             sliderWidth={ windowWidth }
             itemWidth={ 300 }
@@ -50,7 +48,11 @@ export const HomeScreen = () => {
           />
         </View>
         {/* Popular Movies */}
-        <HorizontalSlider title='Now on cinemas' movies={ nowPlayingMovies } />
+        <HorizontalSlider title='Popular movies' movies={ popular } />
+        {/* Top Rated Movies */}
+        <HorizontalSlider title='Top Rated movies' movies={ topRated } />
+        {/* Upcoming Movies */}
+        <HorizontalSlider title='Upcoming movies' movies={ upcoming } />
       </View>
     </ScrollView>
   )
