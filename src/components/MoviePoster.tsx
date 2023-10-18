@@ -13,7 +13,7 @@ type MoviePosterProps = {
 export const MoviePoster = ({ movie, height = 420, width = 300 }: MoviePosterProps) => {
 
   const { poster_path } = movie;
-  const uriPoster = `https://image.tmdb.org/t/p/w500${poster_path}`
+  const uriPoster = `https://image.tmdb.org/t/p/w500${poster_path}`;
 
   const navigation = useNavigation();
 
@@ -24,7 +24,9 @@ export const MoviePoster = ({ movie, height = 420, width = 300 }: MoviePosterPro
       style={{
         width,
         height,
-        marginHorizontal: 8
+        marginHorizontal: 2,
+        paddingBottom: 20,
+        paddingHorizontal: 7
       }}
     >
       <View style={ styles.imageContainer }>
@@ -46,11 +48,11 @@ const styles = StyleSheet.create({
     flex: 1,
     shadowColor: "#000",
     shadowOffset: {
-	  width: 0,
-	  height: 2,
+	    width: 0,
+	    height: 10,
     },
-    shadowOpacity: 0.40,
-    shadowRadius: 3.84,
-    elevation: 5,
+    shadowOpacity: 0.24,
+    shadowRadius: 7,
+    elevation: 9,
   }
 });
