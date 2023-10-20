@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, View } from 'react-native';
 
+import { CastItem } from './CastItem';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import type { MovieFull } from '../interfaces/movieInterface';
@@ -44,6 +45,21 @@ export const MovieDetails = ({ movieFull, cast }: MovieDetailsProps) => {
       </View>
 
       {/* Casting */}
+      <View style={{ marginTop: 10, marginBottom: 100 }}>
+        <Text
+          style={{
+            fontSize: 24,
+            marginTop: 10,
+            fontWeight: 'bold',
+            marginHorizontal: 20,
+          }}
+        >
+          Cast
+        </Text>
+        <CastItem
+            actor={ cast[0] }
+        />
+      </View>
     </>
   )
 };
