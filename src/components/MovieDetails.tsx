@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 
 import { CastItem } from './CastItem';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -56,8 +56,13 @@ export const MovieDetails = ({ movieFull, cast }: MovieDetailsProps) => {
         >
           Cast
         </Text>
-        <CastItem
-            actor={ cast[0] }
+        <FlatList
+          data={ cast }
+          keyExtractor={ (item) => item.id.toString() }
+          renderItem={ ({ item }) => (<CastItem actor={ item }/>)}
+          horizontal={ true }
+          showsHorizontalScrollIndicator={ false }
+          style={{ marginTop: 10, height: 70 }}
         />
       </View>
     </>
